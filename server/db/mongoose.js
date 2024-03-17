@@ -1,9 +1,20 @@
-var mongoose = require ('mongoose');
+const mongoose = require("mongoose");
 
+const MONGO_URI = process.env.DATABASE_URL;
 
-mongoose.Promise = global.Promise;
+mongoose.connect(MONGO_URI);
 
-//change the database with yours
-mongoose.connect("mongodb://admin:admin123@ds145220.mlab.com:45220/nhs-app");
+mongoose.connection.on("connected", () => {
+  console.log("Connected to MongoDB Atlas");
+});
 
-module.exports = {mongoose};
+mongoose.connection.on("error", (err) => {
+  console.error("MongoDB Atlas connection error:", err);
+});
+
+mongoose.connection.on("disconnected", () => {
+  console.log("Disconnected from MongoDB Atlas");
+});
+
+const db = mongoose.connection;
+module.exports = { db };
