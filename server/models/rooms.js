@@ -33,6 +33,6 @@ async function populateDatabase() {
   }
 }
 
-populateDatabase();
+// populateDatabase();
 
 module.exports = { Room };

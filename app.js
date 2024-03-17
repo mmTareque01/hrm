@@ -122,8 +122,8 @@ app.use('/app', (req, res, next) => {
 */
 
 app.use("/l", async (req, res)=>{
-    // const user = await createUser({username:"admin", password:"admin"})
-    const user = await loginDemo("admin", "admina")
+    const user = await createUser({username:"admin", password:"admin"})
+    // const user = await loginDemo("admin", "admina")
     console.log("output: ",user)
     res.send(user)
 })
